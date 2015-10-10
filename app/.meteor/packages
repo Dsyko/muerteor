@@ -16,6 +16,7 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
+underscore
 accounts-base
 accounts-password
 email
@@ -23,9 +24,10 @@ less
 reactive-var
 
 meteorhacks:subs-manager
-meteorhacks:npm
 meteorhacks:kadira-profiler
 meteorhacks:kadira
+meteorhacks:npm
+npm-container
 
 fortawesome:fontawesome
 momentjs:moment
@@ -33,4 +35,6 @@ momentjs:moment
 percolate:velocityjs
 percolate:momentum
 
-npm-container
+simple:reactive-method
+twbs:bootstrap
+kadira:flow-router
