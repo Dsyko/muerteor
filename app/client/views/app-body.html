@@ -6,11 +6,15 @@
 		</div>
 
 		<div class="description-welcome">
+			Muerteor is a Deadman's Switch. It give you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? Why not!? You might find yourself with valuable information that someone is willing to kill for. Muerteor is an insurance policy. If you go missing or are harmed, Muerteor will make sure the information gets to whomever you want.
+		</div>
+
+		<div class="description-welcome">
 			Lots of stuff borrowed from the Local Market demo made by <a href="http://percolatestudio.com" target="_blank" class="js-open">Percolate Studio</a>. Special thanks to Percolate (now MDG ;) Slava Kim, Sashko Stubailo, and the rest of the MDG team for all their hard work in getting Cordova to work effortlessly with the Meteor CLI.
 		</div>
 	</div>
 
 	<div id="container" class="{{menuOpen}} {{overlayOpen}}">
-		App Goes here!!
+		{{> Template.dynamic template=main}}
 	</div>
 </template>

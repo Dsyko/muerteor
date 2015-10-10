@@ -23,6 +23,10 @@ email
 less
 reactive-var
 
+#routing
+kadira:flow-router
+kadira:blaze-layout
+
 meteorhacks:subs-manager
 meteorhacks:kadira-profiler
 meteorhacks:kadira
@@ -37,4 +41,4 @@ percolate:momentum
 
 simple:reactive-method
 twbs:bootstrap
-kadira:flow-router
+
