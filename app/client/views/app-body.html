@@ -14,7 +14,29 @@
 		</div>
 	</div>
 
-	<div id="container" class="container-fluid {{menuOpen}} {{overlayOpen}}">
-		{{> Template.dynamic template=main}}
+	<div id="container" class="container-fluid">
+		<div class="content-scrollable">
+			{{> appHeader}}
+			{{> Template.dynamic template=main}}
+		</div>
 	</div>
 </template>
+
+<template name="appHeader">
+	<div class="row">
+		<div class="col-xs-12 text-center animate-jaw-slow">
+			{{>skullicon}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center app-title">
+			Muerteor
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center app-sub-title">
+			A Dead Man's Switch
+		</div>
+	</div>
+</template>
+

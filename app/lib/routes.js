@@ -1,6 +1,7 @@
 function routeRequiresLogin(context) {
 	if(!Meteor.userId()){
-		console.log('User not logeed in!');
+		console.log('User not logged in! Redirecting');
+		FlowRouter.go('/entry');
 	}else{
 		console.log('User logged in ;D');
 	}
@@ -15,9 +16,31 @@ function trackRouteClose(context) {
 }
 
 
+FlowRouter.route('/entry', {
+	// calls just before the action
+	triggersEnter: [trackRouteEntry, routeRequiresLogin],
+	action: function() {
+		BlazeLayout.render('appBody', { main: "entry" });
+	},
+	// calls when when we decide to move to another route
+	// but calls before the next route started
+	triggersExit: [trackRouteClose]
+});
+
 FlowRouter.route('/', {
 	// calls just before the action
 	triggersEnter: [trackRouteEntry, routeRequiresLogin],
+	action: function() {
+		BlazeLayout.render('appBody', { main: "home" });
+	},
+	// calls when when we decide to move to another route
+	// but calls before the next route started
+	triggersExit: [trackRouteClose]
+});
+
+FlowRouter.route('/login', {
+	// calls just before the action
+	triggersEnter: [trackRouteEntry],
 	action: function() {
 		BlazeLayout.render('appBody', { main: "home" });
 	},

@@ -3,19 +3,22 @@
   // Sizing
   .font-s2;
   line-height: 22px !important; //override line-height always so we can use em's to size.
-  padding: 1.2em 1.25em .95em; // 48px tall
+  padding: 1em 1em 1em; // 48px tall
 
   // Style
   .type-black;
   .title-caps;
   .transition( all 200ms ease-in );
-  color: @color-empty;
+  //color: @color-empty;
   display: inline-block;
   position: relative;
   text-align: center;
   text-decoration: none !important; //prevents global link styles from applying
   vertical-align: middle;
   white-space: nowrap;
+
+	border: 4px @skull-grey solid;
+	border-radius: 2px;
 
   &[class*="small"] {
     padding: .7em 1.25em .50em; // 36px tall
@@ -96,6 +99,10 @@
   }
 
   &[disabled] { opacity: .5; }
+}
+
+.btn-default:hover{
+	border-color: @skull-grey;
 }
 
 .btns-group {
