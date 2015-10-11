@@ -1,71 +1,77 @@
 <template name="entry">
 	<div class="row-fluid entry">
 		{{#momentum plugin='velocity-reverse' duration=250}}
-			{{#if reactiveVarEquals 'entryState' 'chooseLoginOrRegister'}}
-				<div class="col-xs-12">
-					<div class="col-xs-6">
-						<button class="btn btn-default" data-action="signup"><i class="fa fa-user-plus"></i> Signup</button>
-					</div>
-					<div class="col-xs-6">
-						<button class="btn btn-default" data-action="login"><i class="fa fa-sign-in"></i> Login</button>
-					</div>
+			{{#if showLoginPendingScreen}}
+				<div class="col-xs-12 text-center">
+					<i class="fa fa-spinner fa-spin"></i> logging in
 				</div>
-			{{/if}}
-			{{#if reactiveVarEquals 'entryState' 'chooseSignupMethod'}}
-				<div class="col-xs-12">
-					<div class="col-xs-6">
-						<button class="btn btn-default" data-action="signup-with-twitter"><i class="fa fa-twitter twitter-blue"></i> Twitter</button>
+			{{else}}
+				{{#if reactiveVarEquals 'entryState' 'chooseLoginOrRegister'}}
+					<div class="col-xs-12">
+						<div class="col-xs-6">
+							<button class="btn btn-default" data-action="signup"><i class="fa fa-user-plus"></i> Signup</button>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-default" data-action="login"><i class="fa fa-sign-in"></i> Login</button>
+						</div>
 					</div>
-					<div class="col-xs-6">
-						<button class="btn btn-default" data-action="signup-with-email"><i class="fa fa-envelope-o"></i> Email</button>
+				{{/if}}
+				{{#if reactiveVarEquals 'entryState' 'chooseSignupMethod'}}
+					<div class="col-xs-12">
+						<div class="col-xs-6">
+							<button class="btn btn-default" data-action="signup-with-twitter"><i class="fa fa-twitter twitter-blue"></i> Twitter</button>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-default" data-action="signup-with-email"><i class="fa fa-envelope-o"></i> Email</button>
+						</div>
+						<div class="col-xs-12 text-center entry-sub-header">
+							Choose a Signup Method
+						</div>
 					</div>
-					<div class="col-xs-12 text-center entry-sub-header">
-						Choose a Signup Method
+				{{/if}}
+				{{#if reactiveVarEquals 'entryState' 'chooseLoginMethod'}}
+					<div class="col-xs-12">
+						<div class="col-xs-6">
+							<button class="btn btn-default" data-action="login-with-twitter"><i class="fa fa-twitter twitter-blue"></i> Twitter</button>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-default" data-action="login-with-email"><i class="fa fa-envelope-o"></i> Email</button>
+						</div>
+						<div class="col-xs-12 text-center entry-sub-header">
+							Choose A Login Method
+						</div>
 					</div>
-				</div>
-			{{/if}}
-			{{#if reactiveVarEquals 'entryState' 'chooseLoginMethod'}}
-				<div class="col-xs-12">
-					<div class="col-xs-6">
-						<button class="btn btn-default" data-action="login-with-twitter"><i class="fa fa-twitter twitter-blue"></i> Twitter</button>
+				{{/if}}
+				{{#if reactiveVarEquals 'entryState' 'loginTwitter'}}
+					<div class="col-xs-12">
+						<div class="col-xs-10 col-xs-offset-1">
+							<button class="btn btn-default" data-action="launch-twitter-login"><i class="fa fa-twitter twitter-blue"></i>Login with Twitter</button>
+						</div>
+						<div class="col-xs-12 text-center entry-sub-header">
+							Tap to Login With Twitter
+						</div>
 					</div>
-					<div class="col-xs-6">
-						<button class="btn btn-default" data-action="login-with-email"><i class="fa fa-envelope-o"></i> Email</button>
+				{{/if}}
+				{{#if reactiveVarEquals 'entryState' 'signUpEmail'}}
+					<div class="col-xs-12">
+						<div class="col-xs-10 col-xs-offset-1 text-center text-white">
+							Not Yet Available
+						</div>
+						<div class="col-xs-12 text-center entry-sub-header">
+							Sorry only Twitter Signups
+						</div>
 					</div>
-					<div class="col-xs-12 text-center entry-sub-header">
-						Choose A Login Method
+				{{/if}}
+				{{#if reactiveVarEquals 'entryState' 'loginEmail'}}
+					<div class="col-xs-12">
+						<div class="col-xs-10 col-xs-offset-1 text-center text-white">
+							Not Yet Available
+						</div>
+						<div class="col-xs-12 text-center entry-sub-header">
+							Sorry only Twitter Logins
+						</div>
 					</div>
-				</div>
-			{{/if}}
-			{{#if reactiveVarEquals 'entryState' 'loginTwitter'}}
-				<div class="col-xs-12">
-					<div class="col-xs-10 col-xs-offset-1">
-						<button class="btn btn-default" data-action="launch-twitter-login"><i class="fa fa-twitter twitter-blue"></i>Login with Twitter</button>
-					</div>
-					<div class="col-xs-12 text-center entry-sub-header">
-						Tap to Login With Twitter
-					</div>
-				</div>
-			{{/if}}
-			{{#if reactiveVarEquals 'entryState' 'signUpEmail'}}
-				<div class="col-xs-12">
-					<div class="col-xs-10 col-xs-offset-1 text-center text-white">
-						Not Yet Available
-					</div>
-					<div class="col-xs-12 text-center entry-sub-header">
-						Sorry only Twitter Signups
-					</div>
-				</div>
-			{{/if}}
-			{{#if reactiveVarEquals 'entryState' 'loginEmail'}}
-				<div class="col-xs-12">
-					<div class="col-xs-10 col-xs-offset-1 text-center text-white">
-						Not Yet Available
-					</div>
-					<div class="col-xs-12 text-center entry-sub-header">
-						Sorry only Twitter Logins
-					</div>
-				</div>
+				{{/if}}
 			{{/if}}
 		{{/momentum}}
 		<div class="col-xs-12 text-center {{#if reactiveVarEquals 'entryState' 'chooseLoginOrRegister'}}hidden-animated{{else}}visible-animated{{/if}}">

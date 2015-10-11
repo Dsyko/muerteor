@@ -27,7 +27,10 @@ div[data-action="return-home"]{
 	height: 300px;
 	margin-left: auto;
 	margin-right: auto;
-	transition: margin 0s @animationLength, width @animationLength ease-in-out;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition: margin 0s @animationLength ease-in-out, width @animationLength ease-in-out;
+	transition: margin 0s @animationLength ease-in-out, width @animationLength ease-in-out;
 }
 .app-icon,
 .app-title,
@@ -58,6 +61,9 @@ div[data-action="return-home"]{
 	.app-icon{
 		width: 40px;
 		height: 40px;
+		-webkit-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+		-webkit-transition: width @animationLength ease-in-out;
 		transition: width @animationLength ease-in-out;
 		margin: 0px;
 	}
@@ -73,6 +79,9 @@ div[data-action="return-home"]{
 	}
 	.app-title{
 		.font-m1;
+		-webkit-transform: translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+		-webkit-transition: font-size @animationLength ease-in-out;
 		transition: font-size @animationLength ease-in-out;
 		vertical-align: top;
 		margin-top: 10px;

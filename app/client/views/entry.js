@@ -3,10 +3,18 @@ Template.entry.onCreated(function(){
 	template.entryState = new ReactiveVar('chooseLoginOrRegister');
 
 	template.autorun(function(){
-		if(Meteor.userId()){
-			FlowRouter.go('/');
+		if(Meteor.userId() && _.isObject(Users.findOne({_id: Meteor.userId()}, {fields: {'_id': 1}}))){
+			Meteor.setTimeout(function(){ //Give time for the login animation
+				FlowRouter.go('/');
+			}, 500);
 		}
 	});
+});
+
+Template.entry.helpers({
+	showLoginPendingScreen: function(){
+		return Meteor.loggingIn() || ( Meteor.userId() && _.isObject(Users.findOne({_id: Meteor.userId()}, {fields: {'_id': 1}})));
+	}
 });
 
 Template.entry.events = {
