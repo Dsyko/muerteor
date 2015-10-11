@@ -1,7 +1,6 @@
 var timeoutHandle;
 var twilio = Meteor.npmRequire('twilio');
 var twilioClient = twilio(Meteor.settings.twilio.account, Meteor.settings.twilio.token);
-var Fiber = Meteor.npmRequire('fibers');
 
 
 var sendMessage = function(message){
@@ -41,7 +40,7 @@ var sendMessage = function(message){
 
 	_.each(message.calls, function(phoneNumber){
 		//Initiate Call
-		client.makeCall({
+		twilioClient.makeCall({
 
 			to:'+1' + phoneNumber, // Any number Twilio can call
 			from: TWILIO_PHONE_NUMBER, // A number you bought from Twilio and can use for outbound communication
@@ -87,7 +86,8 @@ Meteor.startup(function () {
 WebApp.connectHandlers.use(function(request, result, next) {
 	// Need to create a Fiber since we're using synchronous http calls and nothing
 	// else is wrapping this in a fiber automatically
-	Fiber(function () {
+	//Fiber(function () {
+	Meteor.wrapAsync(function(){
 		try {
 			if(!request || !request.url){
 				next();
@@ -117,5 +117,6 @@ WebApp.connectHandlers.use(function(request, result, next) {
 		}catch(err){
 			console.log("Error in middleware: " + JSON.stringify(err));
 		}
-	}).run();
+	})();
+	//}).run();
 });

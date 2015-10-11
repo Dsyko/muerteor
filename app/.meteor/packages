@@ -36,7 +36,6 @@ meteorhacks:subs-manager
 meteorhacks:kadira-profiler
 meteorhacks:kadira
 meteorhacks:npm
-npm-container
 
 fortawesome:fontawesome
 entypo
@@ -55,3 +54,6 @@ mizzao:bootboxjs
 cmather:handlebars-server
 
 
+
+
+npm-container

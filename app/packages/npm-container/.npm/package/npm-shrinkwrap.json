@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "fibers": {
-      "version": "1.0.7"
-    },
     "twilio": {
       "version": "2.5.1",
       "dependencies": {

@@ -144,6 +144,7 @@ Template.newMessageEditablePeople.onRendered(function(){
 		mode: 'inline',
 		placeholder: 'Enter emails',
 		emptytext: 'Tap to add Emails',
+		type: 'email',
 		select2: {
 			tags: true,
 			tokenSeparators: [",", " "]
@@ -158,6 +159,7 @@ Template.newMessageEditablePeople.onRendered(function(){
 		mode: 'inline',
 		placeholder: 'Numbers to Text',
 		emptytext: 'Tap to add numbers to text',
+		type: 'number',
 		select2: {
 			tags: true,
 			tokenSeparators: [",", " "]
@@ -171,6 +173,7 @@ Template.newMessageEditablePeople.onRendered(function(){
 		mode: 'inline',
 		placeholder: 'Numbers to Call',
 		emptytext: 'Tap to add numbers to call',
+		type: 'number',
 		select2: {
 			tags: true,
 			tokenSeparators: [",", " "]
