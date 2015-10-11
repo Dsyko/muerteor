@@ -68,5 +68,28 @@ Template.home.events = {
 	'click button[data-action="edit-message"]': function(event, template){
 		var message = this;
 		FlowRouter.go('/new-message/' +  message._id);
+	},
+	'click button[data-action="delete-message"]': function(event, template){
+		var message = this;
+		bootbox.dialog({
+			message: "Are you sure you want to delete this message?",
+			//title: "Delete Message",
+			buttons: {
+				success: {
+					label: "Cancel",
+					className: "btn-default btn-small",
+					callback: function() {
+
+					}
+				},
+				danger: {
+					label: "Delete",
+					className: "btn-danger btn-small",
+					callback: function() {
+						Messages.remove({_id: message._id});
+					}
+				}
+			}
+		});
 	}
 };
