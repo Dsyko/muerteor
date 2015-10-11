@@ -27,10 +27,11 @@
 					{{name}}
 				</span>
 				<div class="message-edit-icons pull-right">
-					Edit Delete
+					<button data-action="edit-message"> <i class="entypo entypo-pencil"></i></button>
+					<button data-action="delete-message"> <i class="entypo entypo-trash"></i></button>
 				</div>
-				<div class="message-time-left">
-
+				<div class="message-time-left text-center">
+					<i class="entypo entypo-clock"></i> Time Left: {{timeLeft}}
 				</div>
 				<div class="message-reset text-center">
 					<button class="btn btn-default btn-small" data-action="reset-message-timer"><i class="entypo entypo-back-in-time"></i> Reset Timer</button>
