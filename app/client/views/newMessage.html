@@ -1,0 +1,27 @@
+<template name="newMessage">
+	<div class="row-fluid">
+		{{#with message}}
+			{{#momentum plugin='velocity-reverse' duration=250}}
+				{{#if reactiveVarEquals 'newMessageState' 'name'}}
+					{{>newMessageEditableName}}
+				{{/if}}
+			{{/momentum}}
+		{{/with}}
+		<div class="col-xs-12 new-message-navigation">
+			<div class="col-xs-6">
+				<button class="btn btn-default" data-action="prev"><i class="fa fa-angle-left"></i> Prev</button>
+			</div>
+			<div class="col-xs-6">
+				<button class="btn btn-default pull-right" data-action="next"> Next <i class="fa fa-angle-right"></i></button>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="newMessageEditableName">
+	<div class="row-fluid">
+		<div class="col-xs-12">
+			<input type="text" placeholder="Name Your Message"/>
+		</div>
+	</div>
+</template>

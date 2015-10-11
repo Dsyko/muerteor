@@ -39,11 +39,11 @@ FlowRouter.route('/', {
 	triggersExit: [trackRouteClose]
 });
 
-FlowRouter.route('/login', {
+FlowRouter.route('/new-message/:messageId', {
 	// calls just before the action
-	triggersEnter: [trackRouteEntry],
-	action: function() {
-		BlazeLayout.render('appBody', { main: "home" });
+	triggersEnter: [trackRouteEntry, routeRequiresLogin],
+	action: function(params) {
+		BlazeLayout.render('appBody', { main: "newMessage" });
 	},
 	// calls when when we decide to move to another route
 	// but calls before the next route started

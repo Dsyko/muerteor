@@ -1,3 +1,34 @@
 <template name="home">
-	Messages...
+	{{#if userIsLoggedIn}}
+		{{#momentum plugin='slide-height-fade' duration=250}}
+			{{#if showWelcomeMessage}}
+				<div class="col-xs-12">
+					<div class=" welcome-panel panel panel-default">
+						<div class="panel-heading text-center">
+							You're In!
+							<button class="pull-right" title="Close welcome message" data-action="hide-welcome-message"><i class="fa fa-times"></i></button>
+						</div>
+						<div class="panel-body">
+							<h4 class="text-center welcome-message-section-heading">
+								What is a Muerteor?
+							</h4>
+							Muerteor is a Deadman's Switch. It gives you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? Why not!? You might find yourself with valuable information that someone is willing to kill for. Muerteor is an insurance policy. If you go missing or are unable to check in for any reason, Muerteor will make sure the information gets to whomever you want.
+						</div>
+					</div>
+				</div>
+			{{/if}}
+		{{/momentum}}
+	{{/if}}
+
+	{{#each messages}}
+	{{else}}
+		<div class="text-center no-messages-text">
+			You don't have any messages yet. Tap below to create one.
+		</div>
+	{{/each}}
+	<div class="row-fluid">
+		<div class="col-xs-12 text-center">
+			<button class="btn btn-default new-message-button" data-action="new-message"><i class="fa fa-plus"></i> New Message</button>
+		</div>
+	</div>
 </template>

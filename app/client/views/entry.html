@@ -68,7 +68,7 @@
 				</div>
 			{{/if}}
 		{{/momentum}}
-		<div class="col-xs-12 text-center">
+		<div class="col-xs-12 text-center {{#if reactiveVarEquals 'entryState' 'chooseLoginOrRegister'}}hidden-animated{{else}}visible-animated{{/if}}">
 			<div class="entry-start-over">
 				<a href="#" data-action="restart-entry"><i class="fa fa-rotate-left"></i> Start Over</a>
 			</div>

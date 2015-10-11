@@ -4,5 +4,5 @@ Template.registerHelper('reactiveVarEquals', function(reactiveVar, value) {
 });
 
 Template.registerHelper('userIsLoggedIn', function() {
-	return _.isString(Meteor.userId());
+	return _.isString(Meteor.userId()) && _.isObject(Users.findOne({_id: Meteor.userId()}, {fields: {'_id': 1}}));
 });
