@@ -6,3 +6,4 @@ node_modules
 .idea/
 *~
 .tern*
+app/server/lib/secrets.js
