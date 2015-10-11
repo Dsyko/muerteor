@@ -1,11 +1,11 @@
-//App.info({
-//  name: 'Muerteor',
-//  description: "A Deadman's Switch",
-//  author: 'David Sykora',
-//  email: 'dsykora@gmail.com',
-//  website: 'https://muerteor.meteor.com',
-//  version: '0.0.1'
-//});
+App.info({
+  name: 'Muerteor',
+  description: "A Deadman's Switch",
+  author: 'David Sykora',
+  email: 'dsykora@gmail.com',
+  website: 'https://muerteor.meteor.com',
+  version: '0.0.1'
+});
 
 App.icons({
   // iOS
