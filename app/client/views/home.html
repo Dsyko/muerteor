@@ -31,7 +31,26 @@
 					<button data-action="delete-message"> <i class="entypo entypo-trash"></i></button>
 				</div>
 				<div class="message-time-left text-center">
-					<i class="entypo entypo-clock"></i> Time Left: {{timeLeft}}
+					{{#with timeLeft}}
+						{{#momentum plugin='velocity-reverse' duration=250}}
+							{{#if equal this 'Expired!'}}
+								<div>
+									<div class="message-sent-icon animate-jaw-fast">
+										{{>skullicon}}
+									</div>
+									{{#if ../messageSent}}
+										Message Sent!
+									{{else}}
+										Sending Message
+									{{/if}}
+								</div>
+							{{else}}
+								<div>
+									<i class="entypo entypo-clock"></i> Time Left: {{this}}
+								</div>
+							{{/if}}
+						{{/momentum}}
+					{{/with}}
 				</div>
 				<div class="message-reset text-center">
 					<button class="btn btn-default btn-small" data-action="reset-message-timer"><i class="entypo entypo-back-in-time"></i> Reset Timer</button>

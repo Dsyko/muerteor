@@ -14,7 +14,7 @@ var reRunComputationAfterTime = function(recalculateIn){
 Template.home.helpers({
 	showWelcomeMessage: function(){
 		var user = Users.findOne({_id: Meteor.userId()}, {fields: {'profile.hideWelcomeMessage': 1}});
-		console.log('showWelcomeMessage: ', !(user && user.profile && user.profile.hideWelcomeMessage === true));
+		//console.log('showWelcomeMessage: ', !(user && user.profile && user.profile.hideWelcomeMessage === true));
 		return !(user && user.profile && user.profile.hideWelcomeMessage === true);
 	},
 	messages: function(){
