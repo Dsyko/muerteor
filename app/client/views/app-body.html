@@ -17,13 +17,15 @@
 	<div id="container" class="container-fluid">
 		<div class="content-scrollable">
 			{{> appHeader}}
-			{{> Template.dynamic template=main}}
+			{{#momentum plugin='velocity-reverse' duration=250}}
+				{{> Template.dynamic template=main}}
+			{{/momentum}}
 		</div>
 	</div>
 </template>
 
 <template name="appHeader">
-	<div class="{{#if userIsLoggedIn}}collapsed-header{{/if}} animate-jaw-slow">
+	<div class="{{#if userIsLoggedIn}}collapsed-header{{/if}} animate-jaw-slow" data-action="return-home">
 		<div class="app-icon">
 			{{>skullicon}}
 		</div>

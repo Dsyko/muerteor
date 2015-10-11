@@ -1,9 +1,9 @@
 function routeRequiresLogin(context) {
 	if(!Meteor.userId()){
-		console.log('User not logged in! Redirecting');
+		//console.log('User not logged in! Redirecting');
 		FlowRouter.go('/entry');
 	}else{
-		console.log('User logged in ;D');
+		//console.log('User logged in ;D');
 	}
 }
 

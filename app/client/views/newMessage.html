@@ -1,9 +1,46 @@
 <template name="newMessage">
-	<div class="row-fluid">
+	<div class="row-fluid new-message-container">
 		{{#with message}}
 			{{#momentum plugin='velocity-reverse' duration=250}}
 				{{#if reactiveVarEquals 'newMessageState' 'name'}}
-					{{>newMessageEditableName}}
+					<div class="col-xs-12">
+						<div class="col-xs-12">
+							{{>newMessageEditableName}}
+						</div>
+					</div>
+					<div class="col-xs-12 text-center new-message-sub-header">
+						Give your message a name.
+					</div>
+				{{/if}}
+				{{#if reactiveVarEquals 'newMessageState' 'text'}}
+					<div class="col-xs-12">
+						<div class="col-xs-12">
+							{{>newMessageEditableText}}
+						</div>
+					</div>
+					<div class="col-xs-12 text-center new-message-sub-header">
+						What message would you like to send?
+					</div>
+				{{/if}}
+				{{#if reactiveVarEquals 'newMessageState' 'timer'}}
+					<div class="col-xs-12">
+						<div class="col-xs-12">
+							{{>newMessageEditableTime}}
+						</div>
+					</div>
+					<div class="col-xs-12 text-center new-message-sub-header">
+						How much time before the message gets sent?
+					</div>
+				{{/if}}
+				{{#if reactiveVarEquals 'newMessageState' 'people'}}
+					<div class="col-xs-12">
+						<div class="col-xs-12">
+							{{>newMessageEditablePeople}}
+						</div>
+					</div>
+					<div class="col-xs-12 text-center new-message-sub-header">
+						Who do you want to send this message to?
+					</div>
 				{{/if}}
 			{{/momentum}}
 		{{/with}}
@@ -19,9 +56,42 @@
 </template>
 
 <template name="newMessageEditableName">
-	<div class="row-fluid">
-		<div class="col-xs-12">
-			<input type="text" placeholder="Name Your Message"/>
-		</div>
+	<input type="text" placeholder="Name Your Message"/>
+</template>
+
+<template name="newMessageEditableText">
+	<textarea placeholder="Message to send"></textarea>
+</template>
+
+<template name="newMessageEditableTime">
+	<div class="col-xs-4 text-center">
+		Hours
+		<select class="form-control hours">
+			{{#each hours}}
+				<option>{{this}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="col-xs-4 text-center">
+		Minutes
+		<select class="form-control minutes">
+			{{#each minutes}}
+				<option>{{this}}</option>
+			{{/each}}
+		</select>
+	</div>
+	<div class="col-xs-4 text-center">
+		Seconds
+		<select class="form-control seconds">
+			{{#each seconds}}
+				<option>{{this}}</option>
+			{{/each}}
+		</select>
+	</div>
+</template>
+
+<template name="newMessageEditablePeople">
+	<div class="col-xs-12 text-center">
+		People Here
 	</div>
 </template>
