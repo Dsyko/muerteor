@@ -19,7 +19,11 @@
 			{{/if}}
 		{{/momentum}}
 	{{/if}}
-
+	{{#if messagesExist}}
+	<div class="col-xs-12">
+ 		Your Messages
+	</div>
+	{{/if}}
 	{{#each messages}}
 		<div class="col-xs-12">
 			<div class="message-container">

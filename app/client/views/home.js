@@ -17,6 +17,9 @@ Template.home.helpers({
 		//console.log('showWelcomeMessage: ', !(user && user.profile && user.profile.hideWelcomeMessage === true));
 		return !(user && user.profile && user.profile.hideWelcomeMessage === true);
 	},
+	messagesExist: function(){
+		return Messages.find({userId: Meteor.userId()}).count() > 0;
+	},
 	messages: function(){
 		return Messages.find({userId: Meteor.userId()}, {sort: {name: -1}});
 	},
