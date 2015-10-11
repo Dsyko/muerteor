@@ -5,6 +5,11 @@ div[data-action="return-home"]{
 .app-title{
 	color: @color-primary;
 	.font-l2;
+
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition: font-size @animationLength ease;
+	transition: font-size @animationLength ease;
 }
 
 .app-sub-title{
@@ -23,14 +28,12 @@ div[data-action="return-home"]{
 	}
 }
 .app-icon{
-	width: 300px;
-	height: 300px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 100%;
+	height: auto;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
-	-webkit-transition: margin 0s @animationLength ease-in-out, width @animationLength ease-in-out;
-	transition: margin 0s @animationLength ease-in-out, width @animationLength ease-in-out;
+	-webkit-transition: width @animationLength ease-in-out;
+	transition: width @animationLength ease-in-out;
 }
 .app-icon,
 .app-title,
@@ -60,12 +63,11 @@ div[data-action="return-home"]{
 	}
 	.app-icon{
 		width: 40px;
-		height: 40px;
-		-webkit-transform: translate3d(0,0,0);
-		transform: translate3d(0,0,0);
-		-webkit-transition: width @animationLength ease-in-out;
-		transition: width @animationLength ease-in-out;
-		margin: 0px;
+		//-webkit-transform: translate3d(0,0,0);
+		//transform: translate3d(0,0,0);
+		//-webkit-transition: width @animationLength ease-in-out;
+		//transition: width @animationLength ease-in-out;
+		//margin: 0px;
 	}
 	.app-icon,
 	.app-title,
@@ -79,10 +81,6 @@ div[data-action="return-home"]{
 	}
 	.app-title{
 		.font-m1;
-		-webkit-transform: translate3d(0,0,0);
-		transform: translate3d(0,0,0);
-		-webkit-transition: font-size @animationLength ease-in-out;
-		transition: font-size @animationLength ease-in-out;
 		vertical-align: top;
 		margin-top: 10px;
 		margin-left: 5px;
