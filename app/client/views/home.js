@@ -5,7 +5,11 @@ Template.home.helpers({
 		return !(user && user.profile && user.profile.hideWelcomeMessage === true);
 	},
 	messages: function(){
-		return Messages.find({userId: Meteor.userId()}, {sort: {expiration: -1}});
+		return Messages.find({userId: Meteor.userId()}, {sort: {name: -1}});
+	},
+	name: function(){
+		var message = this;
+		return message.name || 'No Name';
 	}
 });
 
@@ -20,5 +24,9 @@ Template.home.events = {
 			userId: Meteor.userId()
 		});
 		FlowRouter.go('/new-message/' + messageId);
+	},
+	'click button[data-action="reset-message-timer"]': function(event, template){
+		var message = this;
+		Meteor.call('resetMessageTimer', message._id, moment().valueOf());
 	}
 };

@@ -28,6 +28,7 @@ ecmascript@0.1.5
 ecmascript-collections@0.1.6
 ejson@1.0.7
 email@1.0.7
+entypo@0.0.0
 es5-shim@4.1.13
 fastclick@1.0.7
 fortawesome:fontawesome@4.4.0
@@ -63,6 +64,8 @@ mongo@1.1.2
 mongo-id@1.0.1
 mongo-livedata@1.0.9
 natestrauser:animate-css@3.4.0
+natestrauser:select2@4.0.0_1
+natestrauser:x-editable-bootstrap@1.5.2_3
 npm-bcrypt@0.7.8_2
 npm-container@1.2.0
 npm-mongo@1.4.39_1

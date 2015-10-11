@@ -39,6 +39,7 @@ meteorhacks:npm
 npm-container
 
 fortawesome:fontawesome
+entypo
 momentjs:moment
 natestrauser:animate-css
 
@@ -47,4 +48,7 @@ percolate:momentum
 
 simple:reactive-method
 twbs:bootstrap
+natestrauser:select2
+natestrauser:x-editable-bootstrap
+
 

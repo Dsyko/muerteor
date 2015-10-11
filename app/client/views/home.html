@@ -21,6 +21,22 @@
 	{{/if}}
 
 	{{#each messages}}
+		<div class="col-xs-12">
+			<div class="message-container">
+				<span class="message-name">
+					{{name}}
+				</span>
+				<div class="message-edit-icons pull-right">
+					Edit Delete
+				</div>
+				<div class="message-time-left">
+
+				</div>
+				<div class="message-reset text-center">
+					<button class="btn btn-default btn-small" data-action="reset-message-timer"><i class="entypo entypo-back-in-time"></i> Reset Timer</button>
+				</div>
+			</div>
+		</div>
 	{{else}}
 		<div class="text-center no-messages-text">
 			You don't have any messages yet. Tap below to create one.

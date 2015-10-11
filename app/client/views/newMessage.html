@@ -43,15 +43,15 @@
 					</div>
 				{{/if}}
 			{{/momentum}}
+			<div class="col-xs-12 new-message-navigation">
+				<div class="col-xs-6">
+					<button class="btn btn-default" data-action="prev"><i class="fa fa-angle-left"></i> {{#if reactiveVarEquals 'newMessageState' 'name'}}Home{{else}}Prev{{/if}}</button>
+				</div>
+				<div class="col-xs-6">
+					<button class="btn btn-default pull-right" data-action="next"> {{#if reactiveVarEquals 'newMessageState' 'people'}}Finish{{else}}Next{{/if}} <i class="fa fa-angle-right"></i></button>
+				</div>
+			</div>
 		{{/with}}
-		<div class="col-xs-12 new-message-navigation">
-			<div class="col-xs-6">
-				<button class="btn btn-default" data-action="prev"><i class="fa fa-angle-left"></i> Prev</button>
-			</div>
-			<div class="col-xs-6">
-				<button class="btn btn-default pull-right" data-action="next"> Next <i class="fa fa-angle-right"></i></button>
-			</div>
-		</div>
 	</div>
 </template>
 
@@ -91,7 +91,28 @@
 </template>
 
 <template name="newMessageEditablePeople">
-	<div class="col-xs-12 text-center">
-		People Here
+	<div class="col-xs-12 text-center new-message-contact-item">
+		Emails (tap to edit)
+		<div class="emails">
+			{{#if emails}}
+				{{emails}}
+			{{/if}}
+		</div>
+	</div>
+	<div class="col-xs-12 text-center new-message-contact-item">
+		Numbers to Text (tap to edit)
+		<div class="texts">
+			{{#if texts}}
+				{{texts}}
+			{{/if}}
+		</div>
+	</div>
+	<div class="col-xs-12 text-center new-message-contact-item">
+		Numbers to Call (tap to edit)
+		<div class="calls">
+			{{#if calls}}
+				{{calls}}
+			{{/if}}
+		</div>
 	</div>
 </template>

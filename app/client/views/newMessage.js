@@ -21,11 +21,17 @@ Template.newMessage.helpers({
 Template.newMessage.events = {
 	'click button[data-action="next"]': function(event, template){
 		event.preventDefault();
+		var message = this;
 		var step = template.newMessageState.get();
 		var stepIndex = _.indexOf(newMessageSteps, step);
 		if(newMessageSteps.length > stepIndex+1){
 			template.newMessageState.set(newMessageSteps[stepIndex+1]);
 			FlowRouter.setQueryParams({messageStep: newMessageSteps[stepIndex+1]});
+		}else{
+			FlowRouter.go('/');
+			FlowRouter.setQueryParams({messageStep: null});
+			//Reset Timer Here
+			Meteor.call('resetMessageTimer', message._id, moment().valueOf());
 		}
 	},
 	'click button[data-action="prev"]': function(event, template){
@@ -35,6 +41,9 @@ Template.newMessage.events = {
 		if(stepIndex > 0){
 			template.newMessageState.set(newMessageSteps[stepIndex-1]);
 			FlowRouter.setQueryParams({messageStep: newMessageSteps[stepIndex-1]});
+		}else{
+			FlowRouter.go('/');
+			FlowRouter.setQueryParams({messageStep: null});
 		}
 	}
 };
@@ -108,3 +117,84 @@ Template.newMessageEditableTime.events = {
 		throttledSave(Messages, message._id, 'duration', duration.valueOf());
 	}
 };
+
+
+
+//Template.newMessageEditablePeople.events = {
+//	'click .emails': function(event, template){
+//		//event.preventDefault();
+//		var message = template.data;
+//		template.$('.emails').editable({
+//			toggle: 'manual',
+//			mode: 'inline',
+//			select2: {
+//				tags: true,
+//				tokenSeparators: [",", " "]
+//			}
+//		}).on('save', function(e, params) {
+//			console.log('Saved value: ' + params.newValue);
+//		}).toggle();
+//	}
+//};
+
+Template.newMessageEditablePeople.onRendered(function(){
+	var template = this;
+	var message = template.data;
+	template.$('.emails').editable({
+		mode: 'inline',
+		placeholder: 'Enter emails',
+		emptytext: 'Tap to add Emails',
+		select2: {
+			tags: true,
+			tokenSeparators: [",", " "]
+		}
+	}).on('save', function(e, params) {
+		//console.log('Saved value: ' + params.newValue);
+		throttledSave(Messages, message._id, 'emails', params.newValue.split(', '));
+	});
+
+
+	template.$('.texts').editable({
+		mode: 'inline',
+		placeholder: 'Numbers to Text',
+		emptytext: 'Tap to add numbers to text',
+		select2: {
+			tags: true,
+			tokenSeparators: [",", " "]
+		}
+	}).on('save', function(e, params) {
+		//console.log('Saved value: ' + params.newValue);
+		throttledSave(Messages, message._id, 'texts', params.newValue.split(', '));
+	});
+
+	template.$('.calls').editable({
+		mode: 'inline',
+		placeholder: 'Numbers to Call',
+		emptytext: 'Tap to add numbers to call',
+		select2: {
+			tags: true,
+			tokenSeparators: [",", " "]
+		}
+	}).on('save', function(e, params) {
+		//console.log('Saved value: ' + params.newValue);
+		throttledSave(Messages, message._id, 'calls', params.newValue.split(', '));
+	});
+});
+
+Template.newMessageEditablePeople.helpers({
+	emails: function(){
+		var message = this;
+		if(message && _.isArray(message.emails) && message.emails.length > 0){
+			return message.emails.join(', ');
+		}
+		return false;
+	},
+	texts: function(){
+		var message = this;
+		return (message && message.texts) || [];
+	},
+	calls: function(){
+		var message = this;
+		return (message && message.calls) || [];
+	}
+});
