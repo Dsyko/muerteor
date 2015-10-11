@@ -1,6 +1,13 @@
+function routeRequiresLogin(context) {
+	if(!Meteor.userId()){
+		console.log('User not logeed in!');
+	}else{
+		console.log('User logged in ;D');
+	}
+}
+
 function trackRouteEntry(context) {
-	// context is the output of `FlowRouter.current()`
-	//Mixpanel.track("visit-to-home", context.queryParams);
+
 }
 
 function trackRouteClose(context) {
@@ -10,7 +17,7 @@ function trackRouteClose(context) {
 
 FlowRouter.route('/', {
 	// calls just before the action
-	triggersEnter: [trackRouteEntry],
+	triggersEnter: [trackRouteEntry, routeRequiresLogin],
 	action: function() {
 		BlazeLayout.render('appBody', { main: "home" });
 	},
