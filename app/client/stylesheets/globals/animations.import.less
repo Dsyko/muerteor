@@ -1,3 +1,5 @@
+@animationLength: .25s;
+
 @keyframes bounce{
 	0%, 100% {
 		transform:translateY(0);
@@ -17,4 +19,22 @@
 	10%, 50%, 90% {
 		transform:translateY(-5px);
 	}
+}
+
+.hidden-animated() {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s @animationLength, opacity @animationLength linear;
+}
+
+.minimize-delayed() {
+	width: 0px;
+	height: 0px;
+	transition: width 0s @animationLength, height 0s @animationLength;
+}
+
+.visible-animated() {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity @animationLength linear;
 }

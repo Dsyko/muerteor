@@ -1,5 +1,6 @@
 Template.entry.onCreated(function(){
 	var template = this;
+	console.log('entry template created');
 	template.entryState = new ReactiveVar('chooseLoginOrRegister');
 
 	template.autorun(function(){

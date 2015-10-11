@@ -23,19 +23,18 @@
 </template>
 
 <template name="appHeader">
-	<div class="row">
-		<div class="col-xs-12 text-center animate-jaw-slow">
+	<div class="{{#if userIsLoggedIn}}collapsed-header{{/if}} animate-jaw-slow">
+		<div class="app-icon">
 			{{>skullicon}}
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 text-center app-title">
+		<div class="app-title">
 			Muerteor
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 text-center app-sub-title">
+		<div class="app-sub-title">
 			A Dead Man's Switch
+		</div>
+		<div class="app-logout">
+			<a href="#" data-action="logout"><i class="fa fa-sign-out"></i> Logout</a>
 		</div>
 	</div>
 </template>

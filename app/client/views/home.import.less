@@ -13,3 +13,64 @@
 		animation: laugh 15s ease-in-out infinite;
 	}
 }
+.app-icon{
+	width: 300px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	transition: margin 0s @animationLength, width @animationLength ease-in-out;
+}
+.app-icon,
+.app-title,
+.app-sub-title{
+	text-align: center;
+}
+
+.app-logout{
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+.app-sub-title{
+	.visible-animated;
+}
+
+.collapsed-header{
+	.app-sub-title{
+		text-align: center;
+	}
+	.app-icon{
+		width: 40px;
+		height: 40px;
+		transition: width @animationLength ease-in-out;
+		margin: 0px;
+	}
+	.app-icon,
+	.app-title,
+	.app-sub-title{
+		display:inline-block;
+	}
+	.app-sub-title{
+		.hidden-animated;
+		.minimize-delayed;
+		vertical-align: top;
+	}
+	.app-title{
+		.font-m1;
+		transition: font-size @animationLength ease-in-out;
+		vertical-align: top;
+		margin-top: 10px;
+		margin-left: 5px;
+	}
+	.app-logout{
+		.visible-animated;
+	}
+
+}
