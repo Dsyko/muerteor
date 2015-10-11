@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Generator: Assembly 1.0 - http://assemblyapp.co -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300" viewBox="0 0 300 300">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="100" viewBox="0 0 1000 1000">
 	<g id="widget" transform="matrix(1,0,0,1,150,150)">
         <path class="outer-jaw skull-jaw" d="M-67.9978,92.5883 L-68.2331,13.6641 L0.416903,-25.9093 L68.8052,13.5747 L68.5434,92.6321 L0.390524,132.072 Z" fill="#4d4d4d" fill-opacity="1" />
         <path class="inner-jaw skull-jaw" d="M-45.8043,79.4763 L-45.8412,26.535 L0.268671,0.0949688 L46.0819,26.6849 L45.7851,79.7149 L0.0088988,106.066 Z" fill="#ffffff" fill-opacity="1" />
