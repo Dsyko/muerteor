@@ -11,13 +11,22 @@
 
 @keyframes laugh{
 	0%, 20%, 40%, 60%, 80%, 100% {
-		transform:translateY(0);
+		transform:translateY(2px);
 	}
 	30%, 70%{
-		transform:translateY(-2px);
+		transform:translateY(-3px);
 	}
 	10%, 50%, 90% {
-		transform:translateY(-5px);
+		transform:translateY(-4px);
+	}
+}
+
+@keyframes closeJaw{
+	0%{
+		transform:translateY(0px);
+	}
+	100%{
+		transform:translateY(-22px);
 	}
 }
 
@@ -27,14 +36,14 @@
 	transition: visibility 0s @animationLength, opacity @animationLength linear;
 }
 
-.minimize-delayed() {
-	width: 0px;
-	height: 0px;
-	transition: width 0s @animationLength, height 0s @animationLength;
-}
-
 .visible-animated() {
 	visibility: visible;
 	opacity: 1;
 	transition: opacity @animationLength linear;
+}
+
+.minimize-delayed() {
+	width: 0px;
+	height: 0px;
+	transition: width 0s @animationLength, height 0s @animationLength;
 }

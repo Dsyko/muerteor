@@ -1,3 +1,20 @@
+<template name="appHeader">
+	<div class="{{#if userIsLoggedIn}}collapsed-header{{/if}}" data-action="return-home">
+		<div class="app-icon {{skullClasses}}">
+			{{>skullicon}}
+		</div>
+		<div class="app-title">
+			Muerteor
+		</div>
+		<div class="app-sub-title">
+			A Dead Man's Switch
+		</div>
+		<div class="app-logout">
+			<a href="#" data-action="logout"><i class="fa fa-sign-out"></i> Logout</a>
+		</div>
+	</div>
+</template>
+
 <template name="appBody">
 	<div class="wrapper-welcome">
 		<div class="title-welcome">Muerteor</div>
@@ -6,7 +23,7 @@
 		</div>
 
 		<div class="description-welcome">
-			Muerteor is a Deadman's Switch. It gives you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? Why not!? You might find yourself with valuable information that someone is willing to kill for. Muerteor is an insurance policy. If you go missing or are unable to check in for any reason, Muerteor will make sure the information gets to whomever you want.
+			Muerteor is a Deadman's Switch. It gives you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? A shady craigslist deal, a trip into the woods, or even meeting someone new for the first time. Muerteor is an insurance policy. If you go missing or are unable to check in for any reason, Muerteor will make contact for you.
 		</div>
 
 		<div class="description-welcome">
@@ -20,23 +37,6 @@
 			{{#momentum plugin='velocity-reverse' duration=250}}
 				{{> Template.dynamic template=main}}
 			{{/momentum}}
-		</div>
-	</div>
-</template>
-
-<template name="appHeader">
-	<div class="{{#if userIsLoggedIn}}collapsed-header{{/if}}" data-action="return-home">
-		<div class="app-icon animate-jaw-slow">
-			{{>skullicon}}
-		</div>
-		<div class="app-title">
-			Muerteor
-		</div>
-		<div class="app-sub-title">
-			A Dead Man's Switch
-		</div>
-		<div class="app-logout">
-			<a href="#" data-action="logout"><i class="fa fa-sign-out"></i> Logout</a>
 		</div>
 	</div>
 </template>

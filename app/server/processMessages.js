@@ -63,7 +63,7 @@ processMessages = function(){
 	if(nextMessageToProcess){
 		reRunProcessAfter = nextMessageToProcess.sendNextMessageAt - moment().valueOf() + 200;
 	}
-	console.log('re-running processMessages in: ', reRunProcessAfter);
+	//console.log('re-running processMessages in: ', reRunProcessAfter);
 
 	//Process all old messages
 	Messages.find({messageSent: false, sendNextMessageAt: {$lte: moment().valueOf()}}).forEach(sendMessage);
