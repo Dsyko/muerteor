@@ -538,17 +538,20 @@
 						<td valign="top" id="templatePreheader"></td>
 					</tr>
 					<tr>
-						<td valign="top" id="templateHeader"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%; background-color: #000;">
+						<td valign="top" id="templateHeader"></td>
+					</tr>
+					<tr>
+						<td valign="top" id="templateBody"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%; background-color: #000000">
 							<tbody class="mcnImageBlockOuter">
 							<tr>
-								<td valign="top" style="padding:9px" class="mcnImageBlockInner">
+								<td valign="top" style="padding:0px" class="mcnImageBlockInner">
 									<table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
 										<tbody><tr>
-											<td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
+											<td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
 
-
-												<img align="center" alt="Muertoer" src="https://gallery.mailchimp.com/69ddce5c38f4fb82b66c1fd0c/images/6b94e3c0-c65b-421e-bd92-f328fe88e522.png" width="564" style="max-width:754px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-
+												<a href="http://www.muerteor.com" title="Open Muerteor Website" class="" target="_blank">
+													<img align="center" alt="Muerteor" src="https://gallery.mailchimp.com/69ddce5c38f4fb82b66c1fd0c/images/029616e2-e380-4802-8576-061871ec89c0.png" width="600" style="max-width:600px; padding-bottom: 0; display: inline !important; vertical-align: bottom; font-family: lato,helvetica neue,helvetica,arial,sans-serif;font-size: 55px;line-height: 70px;color: #d83e14;" class="mcnImage">
+												</a>
 
 											</td>
 										</tr>
@@ -556,10 +559,7 @@
 								</td>
 							</tr>
 							</tbody>
-						</table></td>
-					</tr>
-					<tr>
-						<td valign="top" id="templateBody"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
+						</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
 							<tbody class="mcnTextBlockOuter">
 							<tr>
 								<td valign="top" class="mcnTextBlockInner">
@@ -569,14 +569,19 @@
 
 											<td valign="top" class="mcnTextContent" style="padding: 9px 18px; line-height: normal;">
 
-												<h1>You've received a message via Muerteor</h1>
+												<h1 style="color: #555555;font-family: lato,helvetica neue,helvetica,arial,sans-serif;">You've received a message from {{sendersName}} via Muerteor</h1>
 
-												<p style="line-height: normal;">{{message}}</p>
+												<p style="line-height: normal;">
+													<strong style="color: #555555;font-family: lato,helvetica neue,helvetica,arial,sans-serif;font-size: 12px;line-height: 18px;"><span style="font-size:14px">Here's the message:</span></strong><br>
+													<span style="font-size:12px"><span>{{message}}</span></span></p>
+<span style="color: #555555;font-family: lato,helvetica neue,helvetica,arial,sans-serif;font-size: 12px;line-height: 18px;">
+<p style="line-height: normal;"><strong><font color="#555555" face="lato, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:14px; line-height:18px">Why am I&nbsp;receiving&nbsp;this?</span></font></strong><br>
+	<span style="font-size:12px; line-height:12px">{{sendersName}} setup a message to be sent to you if they didn't checkin with our service for {{time}}. That time is up and&nbsp;{{sendersName}} never checked in, so we are sending you this&nbsp;message on their behalf.</span><br>
+	<br>
+	<strong><span style="font-size:14px">What Is Muerteor?</span></strong><br>
+	<span style="font-size:12px">Muerteor is a Deadman's Switch. It gives you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? A shady craigslist deal, a trip into the woods, or even meeting someone new for the first time. Muerteor is an insurance policy. If you go missing or are unable to check in for any reason, Muerteor will make contact for you.</span></p>
 
-												<p style="line-height: normal;"><span style="color: #555555;font-family: lato,helvetica neue,helvetica,arial,sans-serif;font-size: 12px;line-height: 18px;"><strong><span style="font-size:14px">What Is Muerteor?</span></strong><br>
-Muerteor is a Deadman's Switch. It gives you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? Why not!? You might find yourself with valuable information that someone is willing to kill for. Muerteor is an insurance policy. If you go missing or are unable to check in for any reason, Muerteor will make sure the information gets to whomever you want.</span></p>
-
-											</td>
+                        </span></td>
 										</tr>
 										</tbody></table>
 
@@ -607,54 +612,7 @@ Muerteor is a Deadman's Switch. It gives you the ability to create a message tha
 
 
 
-																		<table align="left" border="0" cellpadding="0" cellspacing="0">
-																			<tbody><tr>
-																				<td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-																					<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-																						<tbody><tr>
-																							<td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-																								<table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-																									<tbody><tr>
 
-																										<td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-																											<a href="http://www.twitter.com/muerteor" target="_blank"><img src="http://cdn-images.mailchimp.com/icons/social-block-v2/color-twitter-48.png" style="display:block;" height="24" width="24" class=""></a>
-																										</td>
-
-
-																									</tr>
-																									</tbody></table>
-																							</td>
-																						</tr>
-																						</tbody></table>
-																				</td>
-																			</tr>
-																			</tbody></table>
-
-
-
-
-																		<table align="left" border="0" cellpadding="0" cellspacing="0">
-																			<tbody><tr>
-																				<td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
-																					<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
-																						<tbody><tr>
-																							<td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
-																								<table align="left" border="0" cellpadding="0" cellspacing="0" width="">
-																									<tbody><tr>
-
-																										<td align="center" valign="middle" width="24" class="mcnFollowIconContent">
-																											<a href="https://muerteor.meteor.com" target="_blank"><img src="http://cdn-images.mailchimp.com/icons/social-block-v2/color-link-48.png" style="display:block;" height="24" width="24" class=""></a>
-																										</td>
-
-
-																									</tr>
-																									</tbody></table>
-																							</td>
-																						</tr>
-																						</tbody></table>
-																				</td>
-																			</tr>
-																			</tbody></table>
 
 
 																		<!--[if mso]>
@@ -693,7 +651,6 @@ Muerteor is a Deadman's Switch. It gives you the ability to create a message tha
 								</td>
 							</tr>
 							</tbody>
-						</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
 						</table></td>
 					</tr>
 				</table>

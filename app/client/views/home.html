@@ -19,58 +19,63 @@
 			{{/if}}
 		{{/momentum}}
 	{{/if}}
-	{{#if messagesExist}}
-	<div class="col-xs-12">
- 		Your Messages
-	</div>
-	{{/if}}
-	{{#each messages}}
-		<div class="col-xs-12">
-			<div class="message-container">
-				<span class="message-name">
-					{{name}}
-				</span>
-				<div class="message-edit-icons pull-right">
-					<button data-action="edit-message"> <i class="entypo entypo-pencil"></i></button>
-					<button data-action="delete-message"> <i class="entypo entypo-trash"></i></button>
-				</div>
-				<div class="message-time-left text-center">
-					{{#with timeLeft}}
-						{{#momentum plugin='velocity-reverse' duration=250}}
-							{{#if equal this 'Expired!'}}
-								<div>
-									<div class="message-sent-icon  skull-laugh-fast">
-										{{>skullicon}}
-									</div>
-									{{#if ../messageSent}}
-										<span class="message-sent">Message Sent!</span>
-									{{else}}
-										Sending Message
-									{{/if}}
-								</div>
-							{{else}}
-								<div>
-									<i class="entypo entypo-clock"></i> Time Left: {{this}}
-								</div>
-							{{/if}}
-						{{/momentum}}
-					{{/with}}
-				</div>
-				<div class="message-reset text-center">
-					<button class="btn btn-default btn-small" data-action="reset-message-timer"><i class="entypo entypo-back-in-time"></i> Reset Timer</button>
-				</div>
-			</div>
-		</div>
-	{{else}}
-		<div class="no-messages-text">
-			<div class="col-xs-12 text-center">
-				You don't have any messages yet. Tap below to create one.
-			</div>
-		</div>
-	{{/each}}
 	<div class="row-fluid">
-		<div class="col-xs-12 text-center">
-			<button class="btn btn-default new-message-button" data-action="new-message"><i class="fa fa-plus"></i> New Message</button>
+		<div class="col-xs-6">
+			Your Alerts ({{alertCount}})
 		</div>
+		<div class="col-xs-6 text-right">
+			<button class="btn btn-default btn-mini new-message-button" data-action="new-message"><i class="fa fa-plus"></i> New Alert</button>
+		</div>
+	</div>
+	<div class="row-fluid">
+		{{#momentum plugin='slide-height-fade' duration=250}}
+			{{#each messages}}
+				<div class="col-xs-12">
+					<div class="message-container">
+						<span class="message-name">
+							{{name}}
+						</span>
+						<div class="message-edit-icons pull-right">
+							<button data-action="edit-message"> <i class="entypo entypo-pencil"></i></button>
+							<button data-action="delete-message"> <i class="entypo entypo-trash"></i></button>
+						</div>
+						<div class="message-time-left text-center">
+							{{#with timeLeft}}
+								{{#momentum plugin='velocity-reverse' duration=250}}
+									{{#if equal this 'Expired!'}}
+										<div>
+											<div class="message-sent-icon  skull-laugh-fast">
+												{{>skullicon}}
+											</div>
+											{{#if ../messageSent}}
+												<span class="message-sent">Message Sent!</span>
+											{{else}}
+												Sending Message
+											{{/if}}
+										</div>
+									{{else}}
+										<div>
+											<i class="entypo entypo-clock"></i> Time Left
+										</div>
+										<div class="message-time-left-timer">
+											{{this}}
+										</div>
+									{{/if}}
+								{{/momentum}}
+							{{/with}}
+						</div>
+						<div class="message-reset text-center">
+							<button class="btn btn-default btn-small" data-action="reset-message-timer"><i class="entypo entypo-back-in-time"></i> Reset Timer</button>
+						</div>
+					</div>
+				</div>
+			{{else}}
+				<div class="col-xs-12 text-center">
+					<div class="no-messages-text">
+						You don't have any alerts yet. Tap 'New Alert' at the top right to create one.
+					</div>
+				</div>
+			{{/each}}
+		{{/momentum}}
 	</div>
 </template>

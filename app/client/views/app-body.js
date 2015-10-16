@@ -7,8 +7,9 @@ Template.appHeader.helpers({
 		return (!Meteor.status().connected && (Meteor.status().retryCount > 5 || Meteor.status().status === "failed"));
 	},
 	skullClasses: function(){
-		var classes = '';
-		if(!Meteor.status().connected){
+		//console.log('skull classes run');
+;		var classes = '';
+		if(!Meteor.status().connected && Meteor.completedStartup){
 			classes += ' skull-close-jaw';
 			if(Meteor.status().retryCount > 5 || Meteor.status().status === "failed"){
 				classes += ' skull-red-outline';
@@ -17,6 +18,11 @@ Template.appHeader.helpers({
 			classes += ' skull-laugh-slow';
 		}
 		return classes;
+	},
+	bodyClasses: function(){
+		if(!Meteor.isCordova){
+			$('body').addClass('show-iphone-wrapper');
+		}
 	}
 });
 

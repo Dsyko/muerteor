@@ -9,10 +9,14 @@ var sendMessage = function(message){
 
 		Email.send({
 			to: emailAddress,
-			from: 'david@muerteor.com',
-			subject: 'Message from Muertor user ' + user && user.profile && user.profile.name,
+			from: 'muerteor@muerteor.com',
+			subject: 'Message from ' + user && user.profile && user.profile.name,
 			text: message.text,
-			html: Handlebars.templates.emailTemplate({message: message.text})
+			html: Handlebars.templates.emailTemplate({
+				message: message.text,
+				sendersName: user && user.profile && user.profile.name,
+				time: displayDuration(message.duration)
+			})
 		});
 	});
 
@@ -103,10 +107,24 @@ WebApp.connectHandlers.use(function(request, result, next) {
 
 				}
 				var messageId = splitPath[2];
-				var message = Messages.findOne({_id: messageId}, {fields: {text: 1}});
+				var message = Messages.findOne({_id: messageId}, {fields: {text: 1, userId: 1}});
 				if(message && _.isString(message.text)){
+					var user = Users.findOne({_id: message.userId}, {fields: {profile: 1}});
 					var twiml = new twilio.TwimlResponse();
-					twiml.say(message.text);
+					var intro = "This is an automated message";
+					if(user && user.profile && user.profile.name){
+						intro += " being sent to you by " + user.profile.name;
+					}
+					intro += ". The message is as follows.";
+
+					twiml.say(intro, {voice: 'man', language:'en'})
+						.pause({ length: 1 })
+						.say(message.text, {voice: 'woman', language:'en'})
+						.pause({ length: 1 })
+						.say("This message was sent to you through Moo Air Tee Or, a dead man's switch which sends a message if a user doesn't check in for a certain period of time. For more information go to M, U, E, R, T, E, O, R, dot com.", {voice: 'man', language:'en'})
+						.pause({ length: 1 })
+						.say("Thank you, good bye.", {voice: 'man', language:'en'});
+					//.play('http://www.example.com/some_sound.mp3');
 					result.writeHead(200, {'Content-Type': 'text/xml'});
 					result.end(twiml.toString());
 					return;

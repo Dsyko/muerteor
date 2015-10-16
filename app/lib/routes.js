@@ -20,7 +20,7 @@ FlowRouter.route('/entry', {
 	// calls just before the action
 	triggersEnter: [trackRouteEntry],
 	action: function() {
-		console.log('entry route action!');
+		//console.log('entry route action!');
 		BlazeLayout.render('appBody', { main: "entry" });
 	},
 	// calls when when we decide to move to another route

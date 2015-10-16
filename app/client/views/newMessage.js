@@ -5,16 +5,26 @@ var saveField = function(collection, documentId, field, newValue){
 };
 var throttledSave = _.debounce(saveField, 300);
 
-var newMessageSteps = ['name', 'text', 'timer', 'people'];
+var newMessageSteps = [ 'timer', 'text', 'people', 'name'];
 
 Template.newMessage.onCreated(function(){
-	var template = this;
-	template.newMessageState = new ReactiveVar(FlowRouter.getQueryParam('messageStep') || 'name');
+	if(!_.isString(FlowRouter.getQueryParam('messageStep'))){
+		FlowRouter.setQueryParams({messageStep: newMessageSteps[0]});
+	}
+	Messages.update({_id: FlowRouter.getParam('messageId')}, {$unset: {newMessage: ''}});
 });
 
 Template.newMessage.helpers({
 	message: function(){
-		return Messages.findOne({_id: FlowRouter.getParam('messageId')});
+		return Messages.findOne({_id: FlowRouter.getParam('messageId')}, {fields: {newMessage: 0}});
+	},
+	onFirstStep: function(){
+		var step = FlowRouter.getQueryParam('messageStep');
+		return _.indexOf(newMessageSteps, step) === 0;
+	},
+	onLastStep: function(){
+		var step = FlowRouter.getQueryParam('messageStep');
+		return _.indexOf(newMessageSteps, step) === (newMessageSteps.length -1);
 	}
 });
 
@@ -22,24 +32,21 @@ Template.newMessage.events = {
 	'click button[data-action="next"]': function(event, template){
 		event.preventDefault();
 		var message = this;
-		var step = template.newMessageState.get();
+		var step = FlowRouter.getQueryParam('messageStep');
 		var stepIndex = _.indexOf(newMessageSteps, step);
 		if(newMessageSteps.length > stepIndex+1){
-			template.newMessageState.set(newMessageSteps[stepIndex+1]);
 			FlowRouter.setQueryParams({messageStep: newMessageSteps[stepIndex+1]});
 		}else{
 			FlowRouter.go('/');
 			FlowRouter.setQueryParams({messageStep: null});
-			//Reset Timer Here
 			Meteor.call('resetMessageTimer', message._id, moment().valueOf());
 		}
 	},
 	'click button[data-action="prev"]': function(event, template){
 		event.preventDefault();
-		var step = template.newMessageState.get();
+		var step = FlowRouter.getQueryParam('messageStep');
 		var stepIndex = _.indexOf(newMessageSteps, step);
 		if(stepIndex > 0){
-			template.newMessageState.set(newMessageSteps[stepIndex-1]);
 			FlowRouter.setQueryParams({messageStep: newMessageSteps[stepIndex-1]});
 		}else{
 			FlowRouter.go('/');
@@ -82,17 +89,23 @@ Template.newMessageEditableText.events = {
 Template.newMessageEditableTime.onRendered(function(){
 	var template = this;
 	var duration = template.data.duration || 0;
-	var hours = Math.floor(duration/ 3600000);
-	duration = duration - (hours * 3600000);
-	var minutes = Math.floor(duration/ 60000);
-	duration = duration - (minutes * 60000);
-	var seconds = Math.floor(duration/ 1000);
+	var days = Math.floor(duration/ moment.duration({days: 1}).valueOf());
+	duration = duration - (days * moment.duration({days: 1}).valueOf());
+	var hours = Math.floor(duration/ moment.duration({hours: 1}).valueOf());
+	duration = duration - (hours * moment.duration({hours: 1}).valueOf());
+	var minutes = Math.floor(duration/ moment.duration({minutes: 1}).valueOf());
+	duration = duration - (minutes * moment.duration({minutes: 1}).valueOf());
+	var seconds = Math.floor(duration/ moment.duration({seconds: 1}).valueOf());
+	template.$('select.days').val(days);
 	template.$('select.hours').val(hours);
 	template.$('select.minutes').val(minutes);
 	template.$('select.seconds').val(seconds);
 });
 
 Template.newMessageEditableTime.helpers({
+	days: function(){
+		return _.range(30);
+	},
 	hours: function(){
 		return _.range(24);
 	},
@@ -111,7 +124,8 @@ Template.newMessageEditableTime.events = {
 		var duration = moment.duration({
 			seconds: parseInt(template.$('select.seconds').val(), 10),
 			minutes: parseInt(template.$('select.minutes').val(), 10),
-			hours: parseInt(template.$('select.hours').val(), 10)
+			hours: parseInt(template.$('select.hours').val(), 10),
+			days: parseInt(template.$('select.days').val(), 10)
 		});
 		//console.log(duration.valueOf());
 		throttledSave(Messages, message._id, 'duration', duration.valueOf());
@@ -159,7 +173,7 @@ Template.newMessageEditablePeople.onRendered(function(){
 		mode: 'inline',
 		placeholder: 'Numbers to Text',
 		emptytext: 'Tap to add numbers to text',
-		type: 'number',
+		type: 'tel',
 		select2: {
 			tags: true,
 			tokenSeparators: [",", " "]
@@ -173,7 +187,7 @@ Template.newMessageEditablePeople.onRendered(function(){
 		mode: 'inline',
 		placeholder: 'Numbers to Call',
 		emptytext: 'Tap to add numbers to call',
-		type: 'number',
+		type: 'tel',
 		select2: {
 			tags: true,
 			tokenSeparators: [",", " "]

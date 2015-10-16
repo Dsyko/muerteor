@@ -18,10 +18,13 @@ Template.home.helpers({
 		return !(user && user.profile && user.profile.hideWelcomeMessage === true);
 	},
 	messagesExist: function(){
-		return Messages.find({userId: Meteor.userId()}).count() > 0;
+		return Messages.find({userId: Meteor.userId(), newMessage: {$ne: true}}).count() > 0;
+	},
+	alertCount: function(){
+		return Messages.find({userId: Meteor.userId(), newMessage: {$ne: true}}).count();
 	},
 	messages: function(){
-		return Messages.find({userId: Meteor.userId()}, {sort: {name: -1}});
+		return Messages.find({userId: Meteor.userId(), newMessage: {$ne: true}}, {sort: {createdAt: -1}});
 	},
 	name: function(){
 		var message = this;
@@ -30,25 +33,14 @@ Template.home.helpers({
 	timeLeft: function(){
 		reRunComputationAfterTime(1000);
 		var message = this;
-		var timeTillExpire =  (message.lastClientResetTime + message.duration) - moment().valueOf();
-		if(timeTillExpire <= 0 || _.isNaN(timeTillExpire)){
+		var timeTillExpire = (message.lastClientResetTime + message.duration) - moment().valueOf();
+		if(timeTillExpire <= 0){
 			return 'Expired!';
 		}
-		var hours = Math.floor(timeTillExpire/ 3600000);
-		timeTillExpire = timeTillExpire - (hours * 3600000);
-		var minutes = Math.floor(timeTillExpire/ 60000);
-		timeTillExpire = timeTillExpire - (minutes * 60000);
-		var seconds = Math.floor(timeTillExpire/ 1000);
-		if(hours < 10){
-			hours = '0' + hours;
+		if(_.isNaN(timeTillExpire)){
+			return 'Timeout Not Selected!';
 		}
-		if(minutes < 10){
-			minutes = '0' + minutes;
-		}
-		if(seconds < 10){
-			seconds = '0' + seconds;
-		}
-		return '' + hours +':' + minutes + ':' + seconds;
+		return displayDuration(timeTillExpire);
 	}
 });
 
@@ -60,9 +52,11 @@ Template.home.events = {
 	},
 	'click button[data-action="new-message"]': function(event, template){
 		var messageId = Messages.insert({
-			userId: Meteor.userId()
+			userId: Meteor.userId(),
+			createdAt: moment().valueOf(),
+			newMessage: true //To prevent screen flickering as message is added before we move to the new message route
 		});
-		FlowRouter.go('/new-message/' + messageId);
+		FlowRouter.go('/new-message/' + messageId + '?messageStep=timer');
 	},
 	'click button[data-action="reset-message-timer"]': function(event, template){
 		var message = this;
@@ -70,7 +64,7 @@ Template.home.events = {
 	},
 	'click button[data-action="edit-message"]': function(event, template){
 		var message = this;
-		FlowRouter.go('/new-message/' +  message._id);
+		FlowRouter.go('/new-message/' +  message._id + '?messageStep=timer');
 	},
 	'click button[data-action="delete-message"]': function(event, template){
 		var message = this;

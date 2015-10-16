@@ -1,4 +1,5 @@
 <template name="appHeader">
+	{{bodyClasses}}
 	<div class="{{#if userIsLoggedIn}}collapsed-header{{/if}}" data-action="return-home">
 		<div class="app-icon {{skullClasses}}">
 			{{>skullicon}}
@@ -18,9 +19,6 @@
 <template name="appBody">
 	<div class="wrapper-welcome">
 		<div class="title-welcome">Muerteor</div>
-		<div class="description-welcome">
-			Muerteor was made by David Sykora for the 2015 Meteor Global Hackathon. Built using <a href="https://www.meteor.com" target="_blank" class="js-open">Meteor</a>. View the source on <a href="https://github.com/Dsyko/muerteor" target="_blank" class="js-open">GitHub</a>.
-		</div>
 
 		<div class="description-welcome">
 			Muerteor is a Deadman's Switch. It gives you the ability to create a message that will automatically be sent by e-mail, text, or call if you don't check in for a certain period of time. Why? A shady craigslist deal, a trip into the woods, or even meeting someone new for the first time. Muerteor is an insurance policy. If you go missing or are unable to check in for any reason, Muerteor will make contact for you.
@@ -29,13 +27,21 @@
 		<div class="description-welcome">
 			Thanks to <a href="http://percolatestudio.com" target="_blank" class="js-open">Percolate Studio</a> (now MDG ;) lots of stuff borrowed from the Local Market demo. Also Special thanks to Slava Kim, Sashko Stubailo, and the rest of the MDG team for all their hard work in getting Cordova to work effortlessly with the Meteor CLI.
 		</div>
+
+		<div class="description-welcome">
+			Muerteor was made by David Sykora for the 2015 Meteor Global Hackathon. Built using <a href="https://www.meteor.com" target="_blank" class="js-open">Meteor</a>. Muerteor is open source and the code is available on <a href="https://github.com/Dsyko/muerteor" target="_blank" class="js-open">GitHub</a>.
+		</div>
 	</div>
 
 	<div id="container" class="container-fluid">
 		<div class="content-scrollable">
 			{{> appHeader}}
 			{{#momentum plugin='velocity-reverse' duration=250}}
-				{{> Template.dynamic template=main}}
+				{{#if userIsLoggedIn}}
+					{{> Template.dynamic template=main}}
+				{{else}}
+					{{>entry}}
+				{{/if}}
 			{{/momentum}}
 		</div>
 	</div>
