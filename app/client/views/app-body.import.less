@@ -2,19 +2,22 @@ div[data-action="return-home"]{
 	cursor: pointer;
 }
 
-.app-title{
+.app-title {
 	color: @color-primary;
 	.font-l2;
-
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-	-webkit-transition: font-size @animationLength ease;
-	transition: font-size @animationLength ease;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: font-size @animationLength ease-in-out;
+	transition: font-size @animationLength ease-in-out;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	font-weight: 700;
 }
-
 .app-sub-title{
 	color: @skull-bone;
 	.font-s3;
+	width: 100%;
 }
 
 //.skull-jaw{
@@ -54,16 +57,21 @@ div[data-action="return-home"]{
 
 .app-icon{
 	width: 100%;
-	height: auto;
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
+	//height: auto;
+	//-webkit-transform: translate3d(0,0,0);
+	//transform: translate3d(0,0,0);
 	-webkit-transition: width @animationLength ease-in-out;
 	transition: width @animationLength ease-in-out;
+	display: inline-block;
+	svg{
+		width: 100%;
+	}
 }
 .app-icon,
 .app-title,
 .app-sub-title{
 	text-align: center;
+	display: inline-block;
 }
 
 .app-logout{
@@ -88,16 +96,11 @@ div[data-action="return-home"]{
 	}
 	.app-icon{
 		width: 40px;
-		//-webkit-transform: translate3d(0,0,0);
-		//transform: translate3d(0,0,0);
-		//-webkit-transition: width @animationLength ease-in-out;
-		//transition: width @animationLength ease-in-out;
-		//margin: 0px;
 	}
 	.app-icon,
 	.app-title,
 	.app-sub-title{
-		display:inline-block;
+		//display:inline-block;
 	}
 	.app-sub-title{
 		.hidden-animated;
@@ -106,9 +109,14 @@ div[data-action="return-home"]{
 	}
 	.app-title{
 		.font-m1;
+		text-align: center;
 		vertical-align: top;
 		margin-top: 10px;
 		margin-left: 5px;
+		font-weight: 700;
+		-webkit-transition: font-size @animationLength/2 ease-in, width @animationLength/2 ease-in-out .2s;
+		transition: font-size @animationLength/2 ease-in, width @animationLength/2 ease-in-out .1s;
+		width: auto;
 	}
 	.app-logout{
 		.visible-animated;
