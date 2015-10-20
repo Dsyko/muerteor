@@ -8,7 +8,7 @@ Template.appHeader.helpers({
 	},
 	skullClasses: function(){
 		//console.log('skull classes run');
-;		var classes = '';
+		var classes = "";
 		if(!Meteor.status().connected && Meteor.completedStartup){
 			classes += ' skull-close-jaw';
 			if(Meteor.status().retryCount > 5 || Meteor.status().status === "failed"){
