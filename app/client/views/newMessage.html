@@ -29,7 +29,7 @@
 						</div>
 					</div>
 					<div class="col-xs-12 text-center new-message-sub-header">
-						Select how much time should pass without a checkin before the message gets sent.
+						Select how much time should pass without a checkin before Muerteor sends your message.
 					</div>
 				{{/if}}
 				{{#if queryParamEquals 'messageStep' 'people'}}
@@ -101,25 +101,25 @@
 </template>
 
 <template name="newMessageEditablePeople">
-	<div class="col-xs-12 text-center new-message-contact-item">
-		Emails (tap to edit)
-		<div class="emails">
+	<div class="col-xs-12 new-message-contact-item">
+		<i class="fa fa-envelope-o"></i> Emails (tap to edit)
+		<div class="emails text-center">
 			{{#if emails}}
 				{{emails}}
 			{{/if}}
 		</div>
 	</div>
-	<div class="col-xs-12 text-center new-message-contact-item">
-		Numbers to Text (tap to edit)
-		<div class="texts">
+	<div class="col-xs-12 new-message-contact-item">
+		<i class="entypo entypo-comment"></i> Numbers to Text (tap to edit)
+		<div class="texts text-center">
 			{{#if texts}}
 				{{texts}}
 			{{/if}}
 		</div>
 	</div>
-	<div class="col-xs-12 text-center new-message-contact-item">
-		Numbers to Call (tap to edit)
-		<div class="calls">
+	<div class="col-xs-12 new-message-contact-item">
+		<i class="fa fa-phone"></i> Numbers to Call (tap to edit)
+		<div class="calls text-center">
 			{{#if calls}}
 				{{calls}}
 			{{/if}}
