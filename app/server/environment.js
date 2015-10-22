@@ -1,0 +1,1 @@
+TWILIO_PHONE_NUMBER = Meteor.settings && Meteor.settings.twilio && Meteor.settings.twilio.number;
