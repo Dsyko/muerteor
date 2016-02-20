@@ -8,3 +8,5 @@ node_modules
 .tern*
 app/server/lib/secrets.js
 app/client/lib/secrets.js
+app/settings.json
+/other
